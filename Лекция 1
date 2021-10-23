@@ -1,0 +1,5 @@
+import math
+a = float(input("Сторона a = "))
+b = float(input("Сторона b = "))
+alpha = math.radians(float(input("Угол Альфа = ")))
+print("Сторона c = ", math.sqrt((a**2 + b**2) - (2 * a * b * math.cos(alpha))))
