@@ -1,0 +1,80 @@
+def isn_int(string):
+    """"Функция проверяет
+    на нецелостность
+    """
+    try:
+        int(string)
+        return False
+    except ValueError:
+        return True
+
+
+a = input('введите число от 0 до 99 ')
+a = int(a)
+if isn_int(a) or a < 0 or a > 99:
+    print('Ошибка введите число от 0 до 99')
+    input()
+    exit(0)
+
+
+ten = a // 10  #Это десятки
+b = a % 10  #А это единицы
+if a == 0:
+    print('ноль')
+if ten == 1:
+    if a == 10:
+        print('десять')
+    elif a == 11:
+        print('одинадцать')
+    elif a == 12:
+        print('двенадцать')
+    elif a == 13:
+        print('тренадцать')
+    elif a == 14:
+        print('четырнадцать')
+    elif a == 15:
+        print('пятнадцать')
+    elif a == 16:
+        print('шеснадцать')
+    elif a == 17:
+        print('семнадцать')
+    elif a == 18:
+        print('восемьнадцать')
+    elif a == 19:
+        print('девятнадцать')
+
+elif ten == 2:
+    print('двадцать',end=' ')
+elif ten == 3:
+    print('тридцать',end=' ')
+elif ten == 4:
+    print('сорок',end=' ')
+elif ten == 5:
+    print('пятьдесят',end=' ')
+elif ten == 6:
+    print('шестьдесят',end=' ')
+elif ten == 7:
+    print('семьдесят',end=' ')
+elif ten == 8:
+    print('восемьдесят',end=' ')
+elif ten == 9:
+    print('девяносто',end=' ')
+if a < 11 or a > 19:
+    if b == 1:
+        print('один',end=' ')
+    elif b == 2:
+        print('два',end=' ')
+    elif b == 3:
+        print('три',end=' ')
+    elif b == 4:
+        print('четыре',end=' ')
+    elif b == 5:
+        print('пять',end=' ')
+    elif b == 6:
+        print('шесть',end=' ')
+    elif b == 7:
+        print('семь',end=' ')
+    elif b == 8:
+        print('восемь',end=' ')
+    elif b == 9:
+        print('девять',end=' ')
