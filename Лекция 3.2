@@ -1,0 +1,28 @@
+
+def nod(number1, number2):
+    del1 = [number1]
+    del2 = [number2]
+    for i in range(1, number1//2):
+        if number1 % i == 0:
+            del1.append(i)
+    for i in range(1, number2//2):
+        if number2 % i == 0:
+            del2.append(i)
+    a = 1
+    for i in del1:
+        for m in del2:
+            if i == m and i > a:
+                a = i
+    return a
+
+
+while True:
+    try:
+        input1 = int(input('Введите первое натуральное число'))
+        input2 = int(input('Введите второе натуральное число'))
+        if input1 <= 0 or input2 <= 0:
+            int('A')
+        print(nod(input1, input2))
+        exit(0)
+    except (TypeError, ValueError):
+        print('Числа введены неверно, введите 2 натуральных числа ')
