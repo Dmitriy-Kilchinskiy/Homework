@@ -1,0 +1,99 @@
+
+import tkinter as tk
+
+
+def command1():
+    win_matrix = tk.Tk()
+    win_matrix.title('Изменение матриц!')
+    win_matrix.geometry('800x600')
+
+    box_matrix = tk.Listbox(win_matrix, selectmode=tk.EXTENDED)
+    box_matrix.place(x=450, y=10, width=300)
+
+    btn_matrix_change = tk.Button(win_matrix, text='Изменить', command=matrix_change)
+    btn_matrix_change.place(x=10, y=157)
+
+    btn_matrix_del = tk.Button(win_matrix, text='Удалить', command=matrix_del)
+    btn_matrix_del.place(x=10, y=157)
+
+    btn_matrix_plus = tk.Button(win_matrix, text='+', command=matrix_plus)
+    btn_matrix_plus.place(x=10, y=157)
+
+
+def matrix_change():
+    pass
+
+
+def matrix_del():
+    pass
+
+
+def matrix_plus():
+    global win_matrix_plus , matrix_lines_input , matrix_columns_input
+    win_matrix_plus = tk.Tk()
+    win_matrix_plus.title('Создание матрицы!')
+    win_matrix_plus.geometry('800x600')
+
+    lbl_matrix_lines = tk.Label(win_matrix_plus, text='Число строк', font=70)
+    lbl_matrix_lines.place(x=10, y=10)
+
+    lbl_matrix_columns = tk.Label(win_matrix_plus, text='Число столбцов', font=70)
+    lbl_matrix_columns.place(x=10, y=50)
+
+    matrix_lines_input = tk.Entry(win_matrix_plus)
+    matrix_lines_input.place(x=200, y=10)
+
+    matrix_columns_input = tk.Entry(win_matrix_plus)
+    matrix_columns_input.place(x=200, y=50)
+
+    btn_matrix_frame = tk.Button(win_matrix_plus, text='OK', command=matrix_plus_frame)
+    btn_matrix_frame.place(x=10, y=100)
+
+
+def matrix_plus_frame():
+    global columns_input , rows_input , rows , cols , text_var
+    matrix_frame = tk.LabelFrame(win_matrix_plus, bd=3, width=400, height=400)
+    matrix_frame.place(x=10, y=100)
+    rows_input = int(matrix_lines_input.get())
+    columns_input = int(matrix_columns_input.get())
+    text_var = []
+    entries = []
+    x2 = 0
+    y2 = 0
+    rows, cols = (rows_input, columns_input)
+    for i in range(rows):
+        text_var.append([])
+        entries.append([])
+        for j in range(cols):
+            text_var[i].append(tk.StringVar())
+            entries[i].append(tk.Entry(matrix_frame, textvariable=text_var[i][j], width=3))
+            entries[i][j].place(x=x2, y=y2)
+            x2 += 30
+
+        y2 += 30
+        x2 = 0
+    button = tk.Button(win_matrix_plus, text="Сохранить", width=15, command=get_mat)
+    button.place(x=400, y=30)
+
+
+def get_mat():
+    matrix = []
+    for i in range(rows):
+        matrix.append([])
+        for j in range(cols):
+            matrix[i].append(text_var[i][j].get())
+    print(matrix)
+
+
+win = tk.Tk()
+win.title('Калькулятор матриц!')
+win.geometry('800x600')
+
+lbl_move_points = tk.Label(win, text='Выберите действие', font=70)
+lbl_move_points.place(x=10, y=10)
+
+btn_matrix = tk.Button(win, text='Матрицы', command=command1)
+btn_matrix.place(x=10, y=157)
+
+
+win.mainloop()
