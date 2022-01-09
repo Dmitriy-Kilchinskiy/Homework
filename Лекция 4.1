@@ -1,0 +1,13 @@
+import random
+
+while True:
+    try:
+        N = int(input("Введите нужное количество элементов массива: "))
+        break
+    except (TypeError, ValueError) as e:
+        print("Ошибка", e)
+
+el = []
+for x in range(0, N):
+    el.append(random.randint(0, 1000))
+print(*el)
